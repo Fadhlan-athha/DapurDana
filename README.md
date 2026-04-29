@@ -83,13 +83,15 @@ Bagi seluruh anggota tim, ikuti langkah wajib di bawah ini untuk menghubungkan r
 ### Langkah 1: Clone Repositori
 Buka terminal di folder tempat Anda biasa menyimpan project, lalu jalankan:
 
-bash
+--bash--
 
 git clone https://github.com/Fadhlan-athha/DapurDana.git
 
 cd DapurDana
 
 ### Langkah 2: Buat Branch Kerja 
+--bash--
+
 git checkout -b tipe/scope-deskripsi-singkat
 
 Contoh untuk Fadhlan (Frontend):
@@ -99,6 +101,8 @@ Contoh untuk Haikal (ML):
 git checkout -b fitur/ml-eksplorasi-data
 
 ### langkah 3: Simpan dan Kirim Perubahan (Push)
+--bash--
+
 git add .
 
 git commit -m "feat(ml): penjelasan singkat apa yang dikerjakan"
@@ -136,6 +140,8 @@ Python 3.9+ (untuk environment ML)
 
 2. Menjalankan Backend & Frontend
 # Terminal 1: Backend Node.js
+--bash--
+
 cd backend
 
 npm install
@@ -143,6 +149,8 @@ npm install
 npm start
 
 # Terminal 2: Frontend React.js
+--bash--
+
 cd frontend
 
 npm install
@@ -150,6 +158,7 @@ npm install
 npm start
 
 3. Menjalankan Environment ML
+--bash--
 
 cd machine-learning
 
