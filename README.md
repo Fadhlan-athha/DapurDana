@@ -82,7 +82,7 @@ Bagi seluruh anggota tim, ikuti langkah wajib di bawah ini untuk menghubungkan r
 
 ### Langkah 1: Clone Repositori
 Buka terminal di folder tempat Anda biasa menyimpan project, lalu jalankan:
-# bash
+-bash-
 git clone 
 cd DapurDana
 
