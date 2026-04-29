@@ -83,16 +83,16 @@ Untuk memastikan MVP selesai sebelum tenggat waktu 30 April, seluruh anggota tim
 
 ### 2. Setup Backend & Frontend
 -bash-
-#Terminal 1: Backend Node.js
+# Terminal 1: Backend Node.js
 cd backend
 npm install && npm start
 
-#Terminal 2: Frontend React.js
+# Terminal 2: Frontend React.js
 cd frontend
 npm install && npm start
 
+## Struktur Folder
 
-## Struktur Direktori
 DapurDana/
 ├── .github/                   # CI/CD Workflows (Azure Deployment)
 ├── backend/                   # Node.js + Express (API Gateway & Business Logic)
