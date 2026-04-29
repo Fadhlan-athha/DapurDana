@@ -1,0 +1,68 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  nodeVersion: '20.x'
+
+stages:
+  - stage: Validate
+    displayName: Validate MVP
+    jobs:
+      - job: Backend
+        displayName: Backend test
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: $(nodeVersion)
+            displayName: Use Node.js
+
+          - script: npm ci
+            workingDirectory: backend
+            displayName: Install backend dependencies
+
+          - script: npm test
+            workingDirectory: backend
+            displayName: Run backend tests
+
+      - job: Frontend
+        displayName: Frontend lint and build
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: $(nodeVersion)
+            displayName: Use Node.js
+
+          - script: npm ci
+            workingDirectory: frontend
+            displayName: Install frontend dependencies
+
+          - script: npm test
+            workingDirectory: frontend
+            displayName: Run frontend tests
+
+          - script: npm run lint
+            workingDirectory: frontend
+            displayName: Lint frontend
+
+          - script: npm run build
+            workingDirectory: frontend
+            displayName: Build frontend
+
+  - stage: Deploy
+    displayName: Deploy placeholder
+    dependsOn: Validate
+    condition: succeeded()
+    jobs:
+      - job: Notes
+        displayName: Deployment notes
+        steps:
+          - script: |
+              echo "Connect this stage to Azure App Service and Static Web Apps service connections."
+              echo "Backend artifact: backend/"
+              echo "Frontend artifact: frontend/dist"
+            displayName: Print deployment handoff

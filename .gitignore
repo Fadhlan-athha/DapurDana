@@ -23,7 +23,11 @@ env/
 # Abaikan dataset mentah dan model raksasa agar git tidak lambat
 machine-learning/datasets/raw/*.csv
 machine-learning/datasets/raw/*.xlsx
+!machine-learning/datasets/raw/sample_food_prices.csv
+!machine-learning/datasets/raw/Data_Gabungan_Ayam_Cabai_Jakarta.csv
 machine-learning/models/*.pkl
+!machine-learning/models/model_ayam.pkl
+!machine-learning/models/model_cabai.pkl
 machine-learning/models/*.h5
 machine-learning/models/*.onnx
 

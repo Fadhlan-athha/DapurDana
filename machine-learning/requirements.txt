@@ -3,5 +3,9 @@ numpy
 scikit-learn
 statsmodels
 tensorflow
+xgboost
+joblib
 matplotlib
 python-dotenv
+jupyter
+ipykernel

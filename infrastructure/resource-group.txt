@@ -1,0 +1,77 @@
+# DapurDana Azure Deployment Notes
+
+Dokumen ini berisi rencana deployment MVP DapurDana di Azure. Nama resource dapat disesuaikan dengan subscription tim.
+
+## Resource Group
+
+```text
+Resource Group : rg-dapurdana-mvp
+Region         : Southeast Asia
+Environment    : MVP / Datathon
+```
+
+## Komponen Azure
+
+1. Azure Static Web Apps
+   - Menyajikan frontend React/Vite.
+   - Build command: `npm run build`
+   - Output folder: `frontend/dist`
+
+2. Azure App Service
+   - Menjalankan backend Node.js + Express.
+   - Startup command: `npm start`
+   - Port mengikuti environment variable `PORT`.
+
+3. Azure Machine Learning
+   - Melatih dan mengekspos model prediksi harga pangan.
+   - Output endpoint dipanggil backend, bukan langsung dari frontend.
+
+4. Azure Key Vault atau App Service Configuration
+   - Menyimpan secret seperti `AZURE_ML_ENDPOINT`, `AZURE_ML_API_KEY`, dan konfigurasi CORS.
+
+## Environment Variables Backend
+
+```text
+PORT=5000
+AZURE_ML_ENDPOINT=
+AZURE_ML_API_KEY=
+NODE_ENV=production
+```
+
+## Environment Variables Frontend
+
+```text
+VITE_API_BASE_URL=https://<backend-app-service>.azurewebsites.net
+```
+
+## Checklist Deployment
+
+1. Jalankan test lokal:
+
+```bash
+cd backend
+npm test
+
+cd ../frontend
+npm test
+npm run lint
+npm run build
+```
+
+2. Deploy backend ke Azure App Service.
+3. Set environment variables backend di App Service Configuration.
+4. Deploy frontend ke Azure Static Web Apps atau App Service static hosting.
+5. Set `VITE_API_BASE_URL` pada build frontend.
+6. Uji endpoint:
+
+```bash
+curl https://<backend-app-service>.azurewebsites.net/api/health
+```
+
+7. Uji flow dashboard: buka frontend, pastikan label "API backend aktif" muncul.
+
+## Catatan Keamanan
+
+- Jangan commit `.env`, API key, dataset besar, atau file model besar.
+- Frontend tidak boleh memegang API key Azure ML.
+- Backend wajib menjadi API gateway untuk validasi payload, mapping response model, dan rekomendasi bisnis.

@@ -1,1 +1,111 @@
-@import "tailwindcss";
+/* ============================================================
+   DapurDana — Design Tokens & Reset
+   ============================================================ */
+
+/* ---------- Light Theme ---------- */
+:root,
+[data-theme="light"] {
+  --bg-base:        #f4f6f1;
+  --bg-surface:     #ffffff;
+  --bg-surface-2:   #eef1ea;
+  --bg-glass:       rgba(255,255,255,0.82);
+  --bg-glass-hover: rgba(255,255,255,0.95);
+
+  --border:         rgba(0,0,0,0.10);
+  --border-strong:  rgba(0,0,0,0.18);
+
+  --text-primary:   #0e1a12;
+  --text-secondary: #4a5c50;
+  --text-muted:     #7a8c80;
+
+  --brand:          #1e6e42;
+  --brand-light:    #d4eddc;
+  --brand-dim:      rgba(30,110,66,0.12);
+
+  --warning:        #c27c00;
+  --warning-light:  #fff3cd;
+  --warning-dim:    rgba(194,124,0,0.12);
+
+  --critical:       #b82b20;
+  --critical-light: #fde8e6;
+  --critical-dim:   rgba(184,43,32,0.12);
+
+  --safe:           #1a7a40;
+  --safe-light:     #d6f0e0;
+
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md:  0 8px 24px rgba(0,0,0,0.09);
+  --shadow-lg:  0 20px 48px rgba(0,0,0,0.12);
+
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  18px;
+  --radius-xl:  24px;
+
+  --navbar-bg:  rgba(255,255,255,0.90);
+}
+
+/* ---------- Dark Theme ---------- */
+[data-theme="dark"] {
+  --bg-base:        #0a1510;
+  --bg-surface:     #111e16;
+  --bg-surface-2:   #192a1f;
+  --bg-glass:       rgba(17,30,22,0.85);
+  --bg-glass-hover: rgba(25,42,31,0.95);
+
+  --border:         rgba(255,255,255,0.08);
+  --border-strong:  rgba(255,255,255,0.14);
+
+  --text-primary:   #e8f0eb;
+  --text-secondary: #8faa97;
+  --text-muted:     #5a7062;
+
+  --brand:          #3ddc7a;
+  --brand-light:    rgba(61,220,122,0.15);
+  --brand-dim:      rgba(61,220,122,0.08);
+
+  --warning:        #f5b731;
+  --warning-light:  rgba(245,183,49,0.15);
+  --warning-dim:    rgba(245,183,49,0.08);
+
+  --critical:       #f26b5e;
+  --critical-light: rgba(242,107,94,0.15);
+  --critical-dim:   rgba(242,107,94,0.08);
+
+  --safe:           #3ddc7a;
+  --safe-light:     rgba(61,220,122,0.12);
+
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.35);
+  --shadow-md:  0 8px 24px rgba(0,0,0,0.45);
+  --shadow-lg:  0 20px 48px rgba(0,0,0,0.55);
+
+  --navbar-bg:  rgba(10,21,16,0.92);
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 15px;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: wait; opacity: 0.65; }
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; max-width: 100%; }
+
+#root { min-height: 100vh; display: flex; flex-direction: column; }
