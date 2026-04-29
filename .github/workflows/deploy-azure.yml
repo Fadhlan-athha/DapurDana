@@ -8,8 +8,8 @@ on:
 
 env:
   # Ganti dengan nama App Service kamu yang ada di Azure
-  AZURE_WEBAPP_NAME: dapurdana-api-datathon
-  NODE_VERSION: '20.x'
+  AZURE_WEBAPP_NAME: DapurDana
+  NODE_VERSION: '24.x'
 
 jobs:
   build-and-deploy:
