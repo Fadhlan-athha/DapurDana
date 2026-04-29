@@ -7,6 +7,8 @@ yarn-error.log
 .env
 build/
 dist/
+# backend/dist dibuat oleh CI/CD (GitHub Actions), jangan di-commit manual
+backend/dist/
 .DS_Store
 
 # ========================

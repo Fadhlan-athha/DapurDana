@@ -20,22 +20,7 @@ app.use((_req, res, next) => {
   next()
 })
 
-// --- Routes ---
-app.get('/', (_req, res) => {
-  res.json({
-    message: 'DapurDana Backend API — Siap!',
-    version: '0.2.0',
-    endpoints: [
-      'GET  /api/health',
-      'GET  /api/commodities',
-      'GET  /api/commodities/status',
-      'GET  /api/commodities/forecast-path/:commodity',
-      'GET  /api/predict/demo-profile',
-      'POST /api/predict',
-    ],
-  })
-})
-
+// --- API Routes (harus didaftarkan sebelum static files) ---
 app.get('/api/health', (_req, res) => {
   const { getForecastMetadata } = require('./data/forecastRepository')
   res.json({
@@ -50,14 +35,13 @@ app.get('/api/health', (_req, res) => {
 app.use('/api/commodities', commodityRoutes)
 app.use('/api/predict', predictionRoutes)
 
-// Backward-compat: /api/demo-profile dan /api/predict (POST) di root
+// Backward-compat aliases
 app.get('/api/demo-profile', (_req, res) => {
   const { DEFAULT_INGREDIENTS, DEFAULT_PROFILE } = require('./services/predictionService')
   res.json({ businessProfile: DEFAULT_PROFILE, ingredients: DEFAULT_INGREDIENTS })
 })
 
 app.post('/api/predict', (req, res, next) => {
-  // Delegasikan ke prediction route handler
   const { calculatePrediction } = require('./services/predictionService')
   try {
     const prediction = calculatePrediction(req.body)
@@ -77,15 +61,37 @@ app.use((err, _req, res, _next) => {
   })
 })
 
-// 404 fallback
-app.use((_req, res) => {
-  res.status(404).json({ error: 'NOT_FOUND', message: 'Endpoint tidak ditemukan.' })
-})
+// --- Static Frontend (hasil build Vite) ---
+// Hanya aktif jika folder dist ada (production / Azure deployment).
+// Saat development lokal, folder ini tidak ada sehingga tidak mengganggu.
+const fs = require('fs')
+const path = require('path')
+const distPath = path.join(__dirname, 'dist')
+
+if (fs.existsSync(distPath)) {
+  // Sajikan semua file statis: JS, CSS, gambar, favicon, dll.
+  app.use(express.static(distPath))
+
+  // SPA fallback: semua route non-/api → index.html
+  // Diperlukan agar React Router bisa menangani /dashboard, /komoditas, dll.
+  app.get('*', (_req, res) => {
+    res.sendFile(path.join(distPath, 'index.html'))
+  })
+} else {
+  // Mode lokal: kembalikan 404 JSON jika dist tidak ada
+  app.use((_req, res) => {
+    res.status(404).json({ error: 'NOT_FOUND', message: 'Endpoint tidak ditemukan.' })
+  })
+}
 
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`\n🍳 DapurDana API berjalan di http://localhost:${PORT}`)
-    console.log(`   Docs: http://localhost:${PORT}/api/health\n`)
+    console.log(`   Docs: http://localhost:${PORT}/api/health`)
+    if (fs.existsSync(distPath)) {
+      console.log(`   Frontend: http://localhost:${PORT} (serving from dist/)`)
+    }
+    console.log()
   })
 }
 

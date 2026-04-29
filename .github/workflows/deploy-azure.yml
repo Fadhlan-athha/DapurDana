@@ -1,0 +1,94 @@
+name: Build & Deploy (Frontend + Backend) ke Azure App Service
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  # Ganti dengan nama App Service kamu yang ada di Azure
+  AZURE_WEBAPP_NAME: dapurdana-api
+  NODE_VERSION: '20.x'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      # ── 1. Checkout ──────────────────────────────────────────────────
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      # ── 2. Setup Node.js ─────────────────────────────────────────────
+      - name: ⚙️ Setup Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      # ── 3. Build Frontend (Vite React) ───────────────────────────────
+      - name: 📦 Install frontend dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: 🏗️ Build frontend (Vite production build)
+        working-directory: ./frontend
+        env:
+          # Karena frontend dan backend sekarang di domain yang sama,
+          # VITE_API_BASE_URL bisa kosong (relative URL /api/...)
+          VITE_API_BASE_URL: ''
+        run: npm run build
+
+      # ── 4. Salin hasil build ke folder backend/dist ──────────────────
+      - name: 📁 Copy dist ke backend/dist
+        run: |
+          mkdir -p backend/dist
+          cp -r frontend/dist/. backend/dist/
+          echo "✅ Frontend dist berhasil disalin ke backend/dist"
+          ls -la backend/dist/
+
+      # ── 5. Install backend dependencies (production only) ────────────
+      - name: 📦 Install backend dependencies (production)
+        working-directory: ./backend
+        run: npm ci --omit=dev
+
+      # ── 6. Buat deployment package (ZIP) ─────────────────────────────
+      - name: 🗜️ Buat deployment ZIP
+        run: |
+          cd backend
+          zip -r ../dapurdana-deploy.zip . \
+            --exclude "*.test.js" \
+            --exclude ".env*" \
+            --exclude "*.md"
+          echo "✅ Deployment ZIP dibuat: $(du -sh ../dapurdana-deploy.zip | cut -f1)"
+
+      # ── 7. Login ke Azure ─────────────────────────────────────────────
+      - name: 🔐 Login ke Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
+
+      # ── 8. Deploy ke Azure App Service ───────────────────────────────
+      - name: 🚀 Deploy ke Azure App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          slot-name: 'Production'
+          package: ./dapurdana-deploy.zip
+
+      # ── 9. Verifikasi deployment ──────────────────────────────────────
+      - name: ✅ Verifikasi health check
+        run: |
+          echo "⏳ Menunggu deployment selesai..."
+          sleep 20
+          echo "🔍 Cek backend health..."
+          curl --fail --silent \
+            https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net/api/health \
+            | python3 -m json.tool || echo "⚠️ Health check gagal, cek logs di Azure Portal"
+          echo ""
+          echo "🌐 App tersedia di: https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
