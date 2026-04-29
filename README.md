@@ -133,13 +133,14 @@ Gunakan *Conventional Commits*: `tipe(scope): deskripsi pekerjaan`
 ---
 
 ## ⚙️ Cara Menjalankan Secara Lokal
-1. Prasyarat
+# 1. Prasyarat
 Node.js (v16+) & npm/yarn
 
 Python 3.9+ (untuk environment ML)
 
-2. Menjalankan Backend & Frontend
-# Terminal 1: Backend Node.js
+# 2. Menjalankan Backend & Frontend
+-Terminal 1: Backend Node.js-
+
 --bash--
 
 cd backend
@@ -148,7 +149,7 @@ npm install
 
 npm start
 
-# Terminal 2: Frontend React.js
+-Terminal 2: Frontend React.js-
 --bash--
 
 cd frontend
@@ -157,7 +158,7 @@ npm install
 
 npm start
 
-3. Menjalankan Environment ML
+# 3. Menjalankan Environment ML
 --bash--
 
 cd machine-learning
