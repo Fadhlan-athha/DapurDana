@@ -137,16 +137,22 @@ Python 3.9+ (untuk environment ML)
 2. Menjalankan Backend & Frontend
 # Terminal 1: Backend Node.js
 cd backend
+
 npm install
+
 npm start
 
 # Terminal 2: Frontend React.js
 cd frontend
+
 npm install
+
 npm start
 
 3. Menjalankan Environment ML
+
 cd machine-learning
+
 pip install -r requirements.txt
 # Buka dan jalankan Jupyter Notebook di dalam folder notebooks/
 
