@@ -21,9 +21,11 @@ test('calculates prediction with legacy status and komoditas fields', () => {
   })
 
   assert.equal(typeof result.status, 'string')
-  assert.equal(result.komoditas, 'Cabai Merah')
+  assert.equal(typeof result.komoditas, 'string')
+  assert.ok(result.forecasts.some((forecast) => forecast.name === result.komoditas))
   assert.equal(result.horizonDays, 7)
-  assert.ok(result.margin.weeklyMarginRisk > 0)
+  assert.equal(typeof result.margin.weeklyMarginRisk, 'number')
+  assert.ok(Number.isFinite(result.margin.weeklyMarginRisk))
   assert.ok(result.runway.projectedRunwayDays > 0)
 })
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-29T13:18:52.522072+00:00",
+  "generatedAt": "2026-04-29T23:45:32.518746+00:00",
   "horizonDays": 7,
   "dataset": "machine-learning/datasets/raw/Data_Gabungan_7_Komoditas_Jakarta.csv",
   "forecasts": {
@@ -9,10 +9,10 @@
       "category": "Protein",
       "unit": "kg",
       "currentPrice": 39846,
-      "predictedPrice": 38669,
+      "predictedPrice": 39435,
       "confidence": 0.95,
-      "rmse": 2329.7,
-      "mape": 3.67,
+      "rmse": 2214.14,
+      "mape": 3.42,
       "volatilityIndex": 0.31,
       "source": "xgboost-local-model",
       "modelFile": "model_ayam.pkl",
@@ -20,37 +20,37 @@
       "forecastPath": [
         {
           "date": "2026-04-30",
-          "price": 39131,
+          "price": 39455,
           "day": 1
         },
         {
           "date": "2026-05-01",
-          "price": 39281,
+          "price": 39854,
           "day": 2
         },
         {
           "date": "2026-05-02",
-          "price": 38970,
+          "price": 39736,
           "day": 3
         },
         {
           "date": "2026-05-03",
-          "price": 38960,
+          "price": 39445,
           "day": 4
         },
         {
           "date": "2026-05-04",
-          "price": 39048,
+          "price": 39478,
           "day": 5
         },
         {
           "date": "2026-05-05",
-          "price": 38977,
+          "price": 39490,
           "day": 6
         },
         {
           "date": "2026-05-06",
-          "price": 38669,
+          "price": 39435,
           "day": 7
         }
       ]
@@ -61,10 +61,10 @@
       "category": "Sayuran",
       "unit": "kg",
       "currentPrice": 52438,
-      "predictedPrice": 53024,
+      "predictedPrice": 51586,
       "confidence": 0.95,
-      "rmse": 3898.55,
-      "mape": 4.3,
+      "rmse": 3892.24,
+      "mape": 4.01,
       "volatilityIndex": 1.0,
       "source": "xgboost-local-model",
       "modelFile": "model_cabai.pkl",
@@ -72,37 +72,37 @@
       "forecastPath": [
         {
           "date": "2026-04-30",
-          "price": 53260,
+          "price": 52834,
           "day": 1
         },
         {
           "date": "2026-05-01",
-          "price": 52727,
+          "price": 51934,
           "day": 2
         },
         {
           "date": "2026-05-02",
-          "price": 52533,
+          "price": 51529,
           "day": 3
         },
         {
           "date": "2026-05-03",
-          "price": 52695,
+          "price": 51815,
           "day": 4
         },
         {
           "date": "2026-05-04",
-          "price": 52396,
+          "price": 51352,
           "day": 5
         },
         {
           "date": "2026-05-05",
-          "price": 52745,
+          "price": 51711,
           "day": 6
         },
         {
           "date": "2026-05-06",
-          "price": 53024,
+          "price": 51586,
           "day": 7
         }
       ]
@@ -113,10 +113,10 @@
       "category": "Bahan Pokok",
       "unit": "kg",
       "currentPrice": 14858,
-      "predictedPrice": 15183,
+      "predictedPrice": 14843,
       "confidence": 0.95,
-      "rmse": 158.97,
-      "mape": 0.95,
+      "rmse": 89.3,
+      "mape": 0.45,
       "volatilityIndex": 0.09,
       "source": "xgboost-local-model",
       "modelFile": "model_beras_premium.pkl",
@@ -124,37 +124,37 @@
       "forecastPath": [
         {
           "date": "2026-04-30",
-          "price": 14951,
+          "price": 14867,
           "day": 1
         },
         {
           "date": "2026-05-01",
-          "price": 15014,
+          "price": 14831,
           "day": 2
         },
         {
           "date": "2026-05-02",
-          "price": 15046,
+          "price": 14839,
           "day": 3
         },
         {
           "date": "2026-05-03",
-          "price": 15076,
+          "price": 14844,
           "day": 4
         },
         {
           "date": "2026-05-04",
-          "price": 15107,
+          "price": 14849,
           "day": 5
         },
         {
           "date": "2026-05-05",
-          "price": 15135,
+          "price": 14844,
           "day": 6
         },
         {
           "date": "2026-05-06",
-          "price": 15183,
+          "price": 14843,
           "day": 7
         }
       ]
@@ -165,9 +165,9 @@
       "category": "Bahan Pokok",
       "unit": "kg",
       "currentPrice": 13294,
-      "predictedPrice": 13127,
+      "predictedPrice": 13130,
       "confidence": 0.95,
-      "rmse": 111.85,
+      "rmse": 108.94,
       "mape": 0.64,
       "volatilityIndex": 0.15,
       "source": "xgboost-local-model",
@@ -176,37 +176,37 @@
       "forecastPath": [
         {
           "date": "2026-04-30",
-          "price": 13169,
+          "price": 13148,
           "day": 1
         },
         {
           "date": "2026-05-01",
-          "price": 13125,
+          "price": 13129,
           "day": 2
         },
         {
           "date": "2026-05-02",
-          "price": 13095,
+          "price": 13108,
           "day": 3
         },
         {
           "date": "2026-05-03",
-          "price": 13115,
+          "price": 13129,
           "day": 4
         },
         {
           "date": "2026-05-04",
-          "price": 13131,
+          "price": 13163,
           "day": 5
         },
         {
           "date": "2026-05-05",
-          "price": 13159,
+          "price": 13167,
           "day": 6
         },
         {
           "date": "2026-05-06",
-          "price": 13127,
+          "price": 13130,
           "day": 7
         }
       ]
@@ -217,10 +217,10 @@
       "category": "Minyak",
       "unit": "liter",
       "currentPrice": 21882,
-      "predictedPrice": 21073,
+      "predictedPrice": 21122,
       "confidence": 0.95,
-      "rmse": 406.36,
-      "mape": 1.25,
+      "rmse": 334.45,
+      "mape": 1.05,
       "volatilityIndex": 0.19,
       "source": "xgboost-local-model",
       "modelFile": "model_minyak_kemasan.pkl",
@@ -228,37 +228,37 @@
       "forecastPath": [
         {
           "date": "2026-04-30",
-          "price": 20907,
+          "price": 21126,
           "day": 1
         },
         {
           "date": "2026-05-01",
-          "price": 20851,
+          "price": 21134,
           "day": 2
         },
         {
           "date": "2026-05-02",
-          "price": 20850,
+          "price": 21113,
           "day": 3
         },
         {
           "date": "2026-05-03",
-          "price": 20868,
+          "price": 21124,
           "day": 4
         },
         {
           "date": "2026-05-04",
-          "price": 20957,
+          "price": 21113,
           "day": 5
         },
         {
           "date": "2026-05-05",
-          "price": 20964,
+          "price": 21128,
           "day": 6
         },
         {
           "date": "2026-05-06",
-          "price": 21073,
+          "price": 21122,
           "day": 7
         }
       ]
@@ -269,10 +269,10 @@
       "category": "Minyak",
       "unit": "liter",
       "currentPrice": 21333,
-      "predictedPrice": 18766,
+      "predictedPrice": 18721,
       "confidence": 0.95,
-      "rmse": 1350.88,
-      "mape": 5.2,
+      "rmse": 1358.46,
+      "mape": 5.33,
       "volatilityIndex": 0.83,
       "source": "xgboost-local-model",
       "modelFile": "model_minyak_curah.pkl",
@@ -280,37 +280,37 @@
       "forecastPath": [
         {
           "date": "2026-04-30",
-          "price": 18916,
+          "price": 18772,
           "day": 1
         },
         {
           "date": "2026-05-01",
-          "price": 18806,
+          "price": 18741,
           "day": 2
         },
         {
           "date": "2026-05-02",
-          "price": 18807,
+          "price": 18753,
           "day": 3
         },
         {
           "date": "2026-05-03",
-          "price": 18778,
+          "price": 18764,
           "day": 4
         },
         {
           "date": "2026-05-04",
-          "price": 18751,
+          "price": 18737,
           "day": 5
         },
         {
           "date": "2026-05-05",
-          "price": 18756,
+          "price": 18735,
           "day": 6
         },
         {
           "date": "2026-05-06",
-          "price": 18766,
+          "price": 18721,
           "day": 7
         }
       ]
@@ -321,10 +321,10 @@
       "category": "Bahan Pokok",
       "unit": "kg",
       "currentPrice": 12118,
-      "predictedPrice": 12353,
+      "predictedPrice": 12474,
       "confidence": 0.95,
-      "rmse": 192.85,
-      "mape": 1.27,
+      "rmse": 229.26,
+      "mape": 1.59,
       "volatilityIndex": 0.22,
       "source": "xgboost-local-model",
       "modelFile": "model_tepung_kemasan.pkl",
@@ -332,37 +332,37 @@
       "forecastPath": [
         {
           "date": "2026-04-30",
-          "price": 12291,
+          "price": 12369,
           "day": 1
         },
         {
           "date": "2026-05-01",
-          "price": 12340,
+          "price": 12379,
           "day": 2
         },
         {
           "date": "2026-05-02",
-          "price": 12318,
+          "price": 12381,
           "day": 3
         },
         {
           "date": "2026-05-03",
-          "price": 12317,
+          "price": 12407,
           "day": 4
         },
         {
           "date": "2026-05-04",
-          "price": 12360,
+          "price": 12446,
           "day": 5
         },
         {
           "date": "2026-05-05",
-          "price": 12356,
+          "price": 12474,
           "day": 6
         },
         {
           "date": "2026-05-06",
-          "price": 12353,
+          "price": 12474,
           "day": 7
         }
       ]

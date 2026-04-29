@@ -16,7 +16,7 @@ const CURRENCY_FIELDS = new Set(['dailyRevenue', 'cashBalance', 'operationalExpe
 function DashboardPage() {
   const [profile, setProfile]     = useState(demoPredictionPayload.businessProfile)
   const [prediction, setPrediction] = useState(demoPrediction)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   function getScaledPayload(currentProfile) {
     const baseRevenue = demoPredictionPayload.businessProfile.dailyRevenue
@@ -42,7 +42,6 @@ function DashboardPage() {
 
   useEffect(() => {
     let active = true
-    setIsLoading(true)
     fetchPrediction(getScaledPayload(demoPredictionPayload.businessProfile))
       .then((result) => { if (active) setPrediction(result) })
       .catch(() => { if (active) setPrediction(demoPrediction) })

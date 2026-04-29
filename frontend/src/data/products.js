@@ -5,8 +5,8 @@ export const products = [
     category: 'Sayuran',
     price: 52438,
     unit: 'kg',
-    status: 'Waspada',
-    trend: '+1.11%',
+    status: 'Kritis',
+    trend: '-1.62%',
     updatedAt: 'Hari ini',
   },
   {
@@ -16,7 +16,7 @@ export const products = [
     price: 39846,
     unit: 'kg',
     status: 'Aman',
-    trend: '-3.08%',
+    trend: '-1.03%',
     updatedAt: 'Hari ini',
   },
   {
@@ -26,7 +26,7 @@ export const products = [
     price: 14858,
     unit: 'kg',
     status: 'Aman',
-    trend: '+3.08%',
+    trend: '-0.10%',
     updatedAt: 'Hari ini',
   },
   {
@@ -35,8 +35,8 @@ export const products = [
     category: 'Bahan Pokok',
     price: 13294,
     unit: 'kg',
-    status: 'Stabil',
-    trend: '-1.21%',
+    status: 'Aman',
+    trend: '-1.23%',
     updatedAt: 'Hari ini',
   },
   {
@@ -46,7 +46,7 @@ export const products = [
     price: 21882,
     unit: 'liter',
     status: 'Aman',
-    trend: '-3.69%',
+    trend: '-3.47%',
     updatedAt: 'Hari ini',
   },
   {
@@ -55,8 +55,8 @@ export const products = [
     category: 'Minyak',
     price: 21333,
     unit: 'liter',
-    status: 'Aman',
-    trend: '-12.03%',
+    status: 'Kritis',
+    trend: '-12.24%',
     updatedAt: 'Hari ini',
   },
   {
@@ -66,7 +66,7 @@ export const products = [
     price: 12118,
     unit: 'kg',
     status: 'Aman',
-    trend: '+1.98%',
+    trend: '+2.94%',
     updatedAt: 'Hari ini',
   },
 ]

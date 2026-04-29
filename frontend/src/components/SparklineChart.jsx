@@ -29,7 +29,6 @@ function SparklineChart({ data = [], width = 120, height = 40, color }) {
   const polyline = points.join(' ')
 
   // Fill area under the line
-  const firstX = pad
   const lastX  = pad + innerW
   const bottomY = pad + innerH
   const fillPoints = `${pad},${bottomY} ${polyline} ${lastX},${bottomY}`
@@ -38,8 +37,6 @@ function SparklineChart({ data = [], width = 120, height = 40, color }) {
   const fill   = color
     ? `${color}22`
     : 'var(--brand-dim)'
-
-  const isUp = prices[prices.length - 1] >= prices[0]
 
   return (
     <svg
