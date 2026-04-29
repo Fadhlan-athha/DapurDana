@@ -63,12 +63,12 @@ Untuk memastikan MVP selesai sebelum tenggat waktu 30 April, seluruh anggota tim
 1. **Strict MVP Scope (Jangan Serakah Fitur):**
    - Fokus **HANYA** pada 2 komoditas (Cabai Merah & Daging Ayam). Jangan menambah dataset lain sebelum MVP ini sukses ter-deploy.
    - Jangan gunakan arsitektur *Machine Learning* yang memakan waktu *training* berhari-hari. Gunakan arsitektur yang sudah teruji dan cepat.
-   - Jangan membuang waktu untuk animasi atau UI yang terlalu kompleks. Fokus pada fungsionalitas fungsional (Status Merah/Kuning/Hijau).
+   - Jangan membuang waktu untuk animasi atau UI yang terlalu kompleks. Fokus pada fungsionalitas utama (Status Merah/Kuning/Hijau).
 2. **Komunikasi Cepat & Transparan:**
    - Setiap *bottleneck* (error *training*, API gagal *fetch*, atau masalah *deployment*) harus dilaporkan maksimal dalam 30 menit agar bisa di-*debug* bersama.
 3. **Git & Version Control Discipline:**
    - Gunakan `.gitignore` secara ketat. **Dilarang keras** melakukan *commit/push* untuk folder `node_modules/`, *virtual environment* Python, atau file dataset mentah/model berukuran raksasa.
-   - Usahakan bekerja di *branch* masing-masing jika memungkinkan (misal: `feat/ml-model`, `feat/ui-dashboard`) untuk mencegah *merge conflict* yang menghabiskan waktu.
+   - Usahakan bekerja di *branch* masing-masing jika memungkinkan untuk mencegah *merge conflict* yang menghabiskan waktu.
 4. **Hard Deadline Harian:**
    - Sore: Data bersih (Dicky) & Mockup UI siap (Fadhlan).
    - Malam: Model ML selesai dilatih (Haikal) & Azure siap menampung (Dicky).
@@ -76,23 +76,54 @@ Untuk memastikan MVP selesai sebelum tenggat waktu 30 April, seluruh anggota tim
 
 ---
 
+## 🌿 Panduan Git & Kolaborasi (Branch & Commit Rules)
+
+### 1. Format Penamaan Branch
+Gunakan format: `tipe/scope-deskripsi-singkat`
+- **Tipe:** `fitur/`, `fix/`, `docs/`, `chore/`
+- **Scope:** `fe`, `be`, `ml`, `cloud`, `data`
+- **Contoh:** `fitur/fe-menambahkan-header`, `fitur/ml-training-model-ayam`, `fix/be-endpoint-azure-error`
+
+### 2. Format Penamaan Commit
+Gunakan *Conventional Commits*: `tipe(scope): deskripsi pekerjaan`
+- **Contoh:** `feat(fe): membuat UI halaman dashboard dan integrasi status warna`
+- **Contoh:** `feat(ml): export model ARIMA untuk harga cabai merah ke .pkl`
+- **Contoh:** `fix(data): membersihkan missing values pada tanggal merah`
+
+### 3. Golden Rules
+- **Dilarang keras *Push* langsung ke branch `main`!** Gunakan Pull Request (PR).
+- Selalu jalankan `git pull origin main` sebelum melakukan *push*.
+- Lakukan *commit* berkala untuk setiap fungsionalitas kecil yang selesai.
+
+---
+
 ## ⚙️ Cara Menjalankan Secara Lokal
+1. Prasyarat
+Node.js (v16+) & npm/yarn
 
-### 1. Prasyarat
-- Node.js (v16+) & Python 3.9+
+Python 3.9+ (untuk environment ML)
 
-### 2. Setup Backend & Frontend
--bash-
+2. Menjalankan Backend & Frontend
 # Terminal 1: Backend Node.js
 cd backend
-npm install && npm start
+npm install
+npm start
 
 # Terminal 2: Frontend React.js
 cd frontend
-npm install && npm start
+npm install
+npm start
 
-## Struktur Folder
+3. Menjalankan Environment ML
+cd machine-learning
+pip install -r requirements.txt
+# Buka dan jalankan Jupyter Notebook di dalam folder notebooks/
 
+---
+
+## 📂 Struktur Direktori Utama
+
+```text
 DapurDana/
 ├── .github/                   # CI/CD Workflows (Azure Deployment)
 ├── backend/                   # Node.js + Express (API Gateway & Business Logic)
@@ -126,47 +157,4 @@ DapurDana/
 │   ├── pitch-deck/            # PowerPoint/PDF Presentasi
 │   └── api-spec.md            # Dokumentasi Endpoint
 └── README.md
-
----
-
-## 🌿 Panduan Git & Kolaborasi (Branch & Commit Rules)
-
-Untuk menjaga repositori tetap rapi dan mencegah konflik kode antar anggota tim, kita menggunakan standar penamaan *Branch* dan *Commit* berikut:
-
-### 1. Format Penamaan Branch
-Gunakan format: `tipe/scope-deskripsi-singkat` (Gunakan huruf kecil dan pisahkan kata dengan strip `-`).
-
-**Tipe Branch:**
-- `fitur/` : Untuk menambahkan fitur atau halaman baru.
-- `fix/` : Untuk memperbaiki *bug* atau *error*.
-- `docs/` : Untuk pembaruan dokumen (README, Proposal, dll).
-- `chore/` : Untuk urusan konfigurasi, instalasi *library*, atau *setup infrastructure*.
-
-**Scope (Ruang Lingkup):**
-- `fe` (Frontend / Fadhlan)
-- `be` (Backend / Fadhlan)
-- `ml` (Machine Learning / Haikal)
-- `cloud` atau `data` (Infrastruktur & Data / Dicky)
-
-**Contoh Penamaan Branch:**
-- `fitur/fe-menambahkan-header`
-- `fitur/ml-training-model-ayam`
-- `fix/be-endpoint-azure-error`
-- `chore/cloud-setup-resource-group`
-
-### 2. Format Penamaan Commit
-Saat melakukan *commit*, berikan pesan yang jelas agar anggota lain tahu apa yang diubah tanpa harus membaca kodenya. Gunakan format *Conventional Commits*: 
-`tipe(scope): deskripsi pekerjaan`
-
-**Contoh Pesan Commit:**
-- `feat(fe): membuat UI halaman dashboard dan integrasi status warna`
-- `feat(ml): export model ARIMA untuk harga cabai merah ke .pkl`
-- `fix(data): membersihkan missing values pada tanggal merah`
-- `docs(readme): update struktur direktori dan cara instalasi`
-
-### 3. Golden Rules Kolaborasi GitHub
-1. **Jangan pernah *Push* langsung ke branch `main`!** Selalu buat *branch* baru dari tugas Anda, lalu buat *Pull Request* (PR).
-2. **Pull sebelum Push:** Selalu jalankan `git pull origin main` di *branch* Anda sebelum melakukan *push* agar kode Anda selalu *up-to-date* dengan pekerjaan teman yang lain.
-3. **Commit Berkala:** Jangan menumpuk pekerjaan seharian baru di-*commit*. Lakukan *commit* setiap kali satu fitur kecil selesai (misal: selesai bikin tombol, langsung commit).
-
 
