@@ -24,12 +24,15 @@ env/
 machine-learning/datasets/raw/*.csv
 machine-learning/datasets/raw/*.xlsx
 !machine-learning/datasets/raw/sample_food_prices.csv
-!machine-learning/datasets/raw/Data_Gabungan_Ayam_Cabai_Jakarta.csv
-machine-learning/models/*.pkl
-!machine-learning/models/model_ayam.pkl
-!machine-learning/models/model_cabai.pkl
+!machine-learning/datasets/raw/Data_Gabungan_7_Komoditas_Jakarta.csv
 machine-learning/models/*.h5
 machine-learning/models/*.onnx
+# Model pkl dikecualikan dari git (terlalu besar untuk 7 model)
+machine-learning/models/*.pkl
+
+# mlForecasts.json DIIZINKAN agar Azure deployment bisa berjalan tanpa upload manual
+# Uncomment baris berikut jika tidak ingin file ini di-commit:
+# backend/data/mlForecasts.json
 
 # ========================
 # OS & Editor Files
