@@ -18,10 +18,10 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x' # Diubah ke versi LTS yang lebih stabil
+          node-version: '20.x'
 
       - name: npm install, build, and test
-        working-directory: ./backend # Menjalankan perintah di dalam folder backend
+        working-directory: ./backend
         run: |
           npm install
           npm run build --if-present
@@ -30,8 +30,8 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: node-app # Nama artifact yang akan disimpan
-          path: ./backend # Hanya mengunggah isi folder backend
+          name: node-app
+          path: . # PERBAIKAN FATAL: Harus "." (titik) agar folder backend terbawa!
 
   deploy:
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: node-app # Harus sama persis dengan nama di tahap build
+          name: node-app
       
       - name: Login to Azure
         uses: azure/login@v2
@@ -59,4 +59,4 @@ jobs:
         with:
           app-name: 'DapurDana'
           slot-name: 'Production'
-          package: . # Menggunakan isi artifact yang sudah di-download
+          package: .
