@@ -74,7 +74,7 @@ if (fs.existsSync(distPath)) {
 
   // SPA fallback: semua route non-/api → index.html
   // Diperlukan agar React Router bisa menangani /dashboard, /komoditas, dll.
-  app.get('/(.*)', (_req, res) => {
+  app.use((_req, res) => {
     res.sendFile(path.join(distPath, 'index.html'))
   })
 } else {
