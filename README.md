@@ -80,22 +80,22 @@ Untuk memastikan MVP selesai sebelum tenggat waktu 30 April, seluruh anggota tim
 
 Bagi seluruh anggota tim, ikuti langkah wajib di bawah ini untuk menghubungkan repositori GitHub ini ke komputer/laptop lokal Anda sebelum mulai mengoding:
 
-## Langkah 1: Clone Repositori
+### Langkah 1: Clone Repositori
 Buka terminal di folder tempat Anda biasa menyimpan project, lalu jalankan:
 # bash
 git clone 
 cd DapurDana
 
-## Buat Branch Kerja 
+### Langkah 2: Buat Branch Kerja 
 git checkout -b tipe/scope-deskripsi-singkat
 
-# Contoh untuk Fadhlan (Frontend):
-# git checkout -b fitur/fe-setup-awal-react
+Contoh untuk Fadhlan (Frontend):
+git checkout -b fitur/fe-setup-awal-react
 
-# Contoh untuk Haikal (ML):
-# git checkout -b fitur/ml-eksplorasi-data
+Contoh untuk Haikal (ML):
+git checkout -b fitur/ml-eksplorasi-data
 
-## Simpan dan Kirim Perubahan (Push)
+### langkah 3: Simpan dan Kirim Perubahan (Push)
 git add .
 git commit -m "feat(ml): penjelasan singkat apa yang dikerjakan"
 git push -u origin nama-branch
