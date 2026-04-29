@@ -1,0 +1,39 @@
+# ========================
+# Node.js & React (Frontend/Backend)
+# ========================
+node_modules/
+npm-debug.log
+yarn-error.log
+.env
+build/
+dist/
+.DS_Store
+
+# ========================
+# Python & Machine Learning (Haikal's Workspace)
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+venv/
+env/
+.env
+
+# Abaikan dataset mentah dan model raksasa agar git tidak lambat
+machine-learning/datasets/raw/*.csv
+machine-learning/datasets/raw/*.xlsx
+machine-learning/models/*.pkl
+machine-learning/models/*.h5
+machine-learning/models/*.onnx
+
+# ========================
+# OS & Editor Files
+# ========================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
