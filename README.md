@@ -82,8 +82,11 @@ Bagi seluruh anggota tim, ikuti langkah wajib di bawah ini untuk menghubungkan r
 
 ### Langkah 1: Clone Repositori
 Buka terminal di folder tempat Anda biasa menyimpan project, lalu jalankan:
+
 bash
+
 git clone https://github.com/Fadhlan-athha/DapurDana.git
+
 cd DapurDana
 
 ### Langkah 2: Buat Branch Kerja 
@@ -97,7 +100,9 @@ git checkout -b fitur/ml-eksplorasi-data
 
 ### langkah 3: Simpan dan Kirim Perubahan (Push)
 git add .
+
 git commit -m "feat(ml): penjelasan singkat apa yang dikerjakan"
+
 git push -u origin nama-branch
 
 ---
