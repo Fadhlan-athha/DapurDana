@@ -65,20 +65,15 @@ jobs:
             --exclude "*.md"
           echo "✅ Deployment ZIP dibuat: $(du -sh ../dapurdana-deploy.zip | cut -f1)"
 
-      # ── 7. Login ke Azure ─────────────────────────────────────────────
-      - name: 🔐 Login ke Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_38709E4CEDC748C682EC457A3CE56AA7 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_35CF64C59153492A8C98E0B286CB81D9 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0CB74E17B4154A5BB7FFCF6F545E0016 }}
+      # LANGKAH 7 (LOGIN AZURE) SUDAH KITA HAPUS TOTAL 🗑️
 
-      # ── 8. Deploy ke Azure App Service ───────────────────────────────
+      # ── 8. Deploy ke Azure App Service (Jalur VIP) ───────────────────
       - name: 🚀 Deploy ke Azure App Service
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           slot-name: 'Production'
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
           package: ./dapurdana-deploy.zip
 
       # ── 9. Verifikasi deployment ──────────────────────────────────────
