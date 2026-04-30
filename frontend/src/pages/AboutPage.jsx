@@ -2,7 +2,7 @@ const TEAM = [
   {
     name: 'R. Haikal Rizki Tri Hartanto',
     role: 'Machine Learning Engineer',
-    desc: 'Evaluasi model XGBoost, ARIMA/SARIMAX, dan narasi bisnis berbasis data.',
+    desc: 'Merancang algoritma, melatih (training), mengevaluasi model XGBoost Regressor dan narasi bisnis berbasis data.',
     emoji: '🤖',
   },
   {
