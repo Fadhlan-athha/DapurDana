@@ -2,7 +2,7 @@
 
 DapurDana adalah aplikasi mobile-web untuk membantu UMKM F&B membaca risiko fluktuasi harga bahan baku sebelum margin kas mereka tertekan. MVP ini menggabungkan prediksi harga komoditas, kalkulator margin/runway, dan rekomendasi taktis seperti restock lebih awal atau penyesuaian porsi.
 
-# LINK AZURE
+# Link Deployed Project (Live App Azure): 
 https://dapurdana-dmgre3dmcrfcfrcg.southeastasia-01.azurewebsites.net/
 
 ## Status MVP
